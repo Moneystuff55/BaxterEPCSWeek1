@@ -16,6 +16,8 @@ def main():
     printStudentsByLName(students)
   elif selection == "2":
     printStudentsByFName(students)
+  elif selection == "3":
+    printSumAge(students)
   elif selection == "4":
     printAvgAge(students)
   else:
@@ -23,17 +25,22 @@ def main():
 
 
 class Student:
-  def __init__(self, lastName, firstName ,age, weight,height):
-    self.lastName = lastName(random.randint(0,7))
+  def __init__(self, lastName,firstName,age,weight,height):
     self.assignRandomAge()
-    self.firstName = firstName(random.randint(0,4))
     self.assignRandomWeight()
     self.assignRandomHeight()
+    self.assignRandomFName()
+    self.assignRandomLName()
 
-  def assignRandomName(self):
-    pass
+  def assignRandomFName(self):
     firstName = ["Bob","Jim","Tom","Timmy","Zach","Larry","Jimmy","Jerome"]
-    lastName = ['smith','pillsbury','dussault','person','cadigan']
+    lastName = ["smith","pillsbury","dussault","person","cadigan"]
+    self.firstName = firstName[random.randint(0,7)]
+   
+
+  def assignRandomLName(self):
+    lastName = ["smith","pillsbury","dussault","person","cadigan"]
+    self.lastName = lastName[random.randint(0,4)]
 
   def assignRandomAge(self):
     self.age = random.randint(1,300)
@@ -81,9 +88,13 @@ def printStudentsByFName(students):
 
 def printSumAge(students):
   print ("Answer:")
+ for student in students:
+  totalAge = student + totalAge
+  print (totalAge)
 
 def printAvgAge(students):
   print ("Answer:")
+
 
 def ageRange(studentA, studentB):
   return math.abs(studentA.age - studentB.age)
