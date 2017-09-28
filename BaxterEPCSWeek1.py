@@ -1,10 +1,11 @@
 import math
+import random
 
 def main():
   students = [
-    Student("Larsson","Hal", 37),
-    Student("BonJovi","Jon", 55),
-    Student("Link"," ", 117),
+    Student("Larsson","Hal", 37,100,60),
+    Student("BonJovi","Jon", 55,100,60),
+    Student("Link"," ", 117,100,60),
   ]
 
   printHeader()
@@ -22,22 +23,26 @@ def main():
 
 
 class Student:
-  def __init__(self, lastName, firstName ,age, weight):
-    self.lastName = lastName
-    self.age = age
-    self.firstName = firstName
+  def __init__(self, lastName, firstName ,age, weight,height):
+    self.lastName = lastName(random.randint(0,7))
+    self.assignRandomAge()
+    self.firstName = firstName(random.randint(0,4))
+    self.assignRandomWeight()
+    self.assignRandomHeight()
 
   def assignRandomName(self):
     pass
+    firstName = ["Bob","Jim","Tom","Timmy","Zach","Larry","Jimmy","Jerome"]
+    lastName = ['smith','pillsbury','dussault','person','cadigan']
 
   def assignRandomAge(self):
-    self.age = random.randint(0,100)
+    self.age = random.randint(1,300)
 
-  def assignRandomWeight(self, isMetric):
+  def assignRandomWeight(self):
     self.weight = random.randint(100,200)
 
-  def assignRandomHeight(self, isMetric):
-    pass
+  def assignRandomHeight(self):
+    self.height = random.randint(0,84)
 
 inputQuestions = [ 
   "For STUDENTS BY AGE, type 0",
@@ -49,8 +54,8 @@ inputQuestions = [
 
 def getUserSelection():
   for inputQuestion in inputQuestions:
-    print(inputQuestions)
-  return int(input("Type selection and press enter:"))
+    print(inputQuestion)
+  return str(input("Type selection and press enter:"))
 
 def printHeader():
     print("HEADER TEXT HERE")
@@ -58,20 +63,21 @@ def printHeader():
 def printStudentsByAge(students):
   print ("----Students By Age-----")
   sortStudents = sorted(students, key=lambda student: student.age)
-  for student in students:
-    print (student.lastName + ", " + student.firstName + ", " + str(student.age))
+  for student in sortStudents:
+   print (student.lastName + ", " + student.firstName + ", " + str(student.age) + "," + str(student.weight) + "," + str(student.height))
+
 
 def printStudentsByLName(students):
   print ("----Students By -----")
   sortStudents = sorted(students, key=lambda student: student.lastName)
-  for student in students:
-    print (student.lastName + ", " + student.firstName + ", " + str(student.age))
+  for student in sortStudents:
+      print (student.lastName + ", " + student.firstName + ", " + str(student.age) + "," + str(student.weight) + "," + str(student.height))
 
 def printStudentsByFName(students):
   print ("----Students By -----")
-sortStudents = sorted(students, key=lambda student: student.lastName)
-for student in students:
-    print (student.lastName + ", " + student.firstName + ", " + str(student.age))
+  sortStudents = sorted(students, key=lambda student: student.firstName)
+  for student in sortStudents:
+      print (student.lastName + ", " + student.firstName + ", " + str(student.age) + "," + str(student.weight) + "," + str(student.height))
 
 def printSumAge(students):
   print ("Answer:")
