@@ -88,13 +88,17 @@ def printStudentsByFName(students):
 
 def printSumAge(students):
   print ("Answer:")
- for student in students:
-  totalAge = student + totalAge
+  totalAge = 0
+  for student in students:
+   totalAge = totalAge + student.age
   print (totalAge)
 
 def printAvgAge(students):
   print ("Answer:")
-
+  totalAge = 0
+  for student in students:
+   totalAge = totalAge + student.age
+  print (totalAge/len(students))
 
 def ageRange(studentA, studentB):
   return math.abs(studentA.age - studentB.age)
